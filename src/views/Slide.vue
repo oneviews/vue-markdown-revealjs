@@ -11,7 +11,6 @@ const md = require("markdown-it")({
 
 export default {
   data() {
-    console.log(this.$route)
     const file = require(`../../slides/${this.$route.path.slice(1)}/index.md`)
     const res = fm(file.default)
     return {
