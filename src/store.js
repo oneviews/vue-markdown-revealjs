@@ -12,7 +12,7 @@ const slides = files.keys().map(key => {
   slide.slug = slug
   return slide
 }).sort((a, b) => {
-  return moment(b.date).diff(moment(a.date))
+  return moment(b.date, "YYYY/MM/DD").diff(moment(a.date, "YYYY/MM/DD"))
 })
 
 export default new Vuex.Store({
