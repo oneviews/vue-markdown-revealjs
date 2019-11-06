@@ -4,9 +4,5 @@
   </div>
 </template>
 
+<style src="../node_modules/reveal.js/css/reset.css"></style>fg
 <style src="./styles/base.styl" lang="stylus"></style>
-<style lang="stylus">
-#app
-  text-align center
-  margin-top 60px
-</style>
