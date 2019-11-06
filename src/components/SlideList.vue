@@ -1,6 +1,5 @@
 <template lang="pug">
   .slide-list
-    h2 SLIDES
     ul
       li(v-for="(slide, key) in slides" :key="key")
         router-link(:to="`/${slide.slug}`")
@@ -20,10 +19,6 @@ export default {
 
 <style lang="stylus" scoped>
 .slide-list
-  h2
-    font-size 1.4rem
-    font-weight bold
-    margin-bottom 1rem
   ul
     li
       list-style none
