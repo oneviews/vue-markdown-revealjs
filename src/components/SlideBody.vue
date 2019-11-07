@@ -11,11 +11,11 @@ export default {
   },
   components: { Katex },
   render (createElement) {
-    return this.templateRender ? this.templateRender() : createElement("div", "Rendering");
+    return this.templateRender ? this.templateRender() : createElement('div', 'Rendering')
   },
   created () {
-    this.templateRender = this.fm.vue.render;
-    this.$options.staticRenderFns = this.fm.vue.staticRenderFns;
+    this.templateRender = this.fm.vue.render
+    this.$options.staticRenderFns = this.fm.vue.staticRenderFns
   }
 }
 </script>

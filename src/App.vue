@@ -4,7 +4,7 @@
       router-view
 </template>
 
-<style src="../node_modules/reveal.js/css/reset.css"></style>fg
+<style src="../node_modules/reveal.js/css/reset.css"></style>
 <style src="./styles/base.styl" lang="stylus"></style>
 <style lang="stylus">
 .fade-enter
