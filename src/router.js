@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from './views/Home.vue'
-import Slide from './views/Slide.vue'
 import NotFound from './views/NotFound.vue'
+import Slide from './views/Slide.vue'
 
 Vue.use(VueRouter)
 
 const files = require.context('../slides/', true, /index\.md$/)
-
 const slideRoutes = files.keys().map(key => {
+  const slug = key.split('/').slice(-2, -1)[0]
   return {
-    path: `/${key.split('/').slice(-2, -1)[0]}`,
-    component: Slide
+    path: `/${slug}`,
+    component: Slide,
   }
 })
 

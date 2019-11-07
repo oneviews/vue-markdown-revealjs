@@ -1,22 +1,20 @@
 <template lang="pug">
-  .slide(v-html="content")
+  .slide
+    component(:is="component")
 </template>
 
 <script>
-const fm = require("front-matter")
-const md = require("markdown-it")({
-  html: true,
-  typographer: true
-})
-
 export default {
   data() {
-    const file = require(`../../slides/${this.$route.path.slice(1)}/index.md`)
-    const res = fm(file.default)
+    const slug = this.$route.path.slice(1,)
+    const fm = require(`../../slides/${slug}/index.md`)
     return {
-      attributes: res.attributes,
-      content: md.render(res.body)
+      attributes: fm.attributes,
+      component: fm.vue.component
     }
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+</style>

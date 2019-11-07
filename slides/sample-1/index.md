@@ -14,7 +14,6 @@ Sample text from https://markdown-it.github.io/
 ##### h5 Heading
 ###### h6 Heading
 
-
 ## Horizontal Rules
 
 ___
