@@ -1,10 +1,10 @@
 <template lang="pug">
   .not-found
     h2 404
-    router-link(to="/") Home
+    router-link(to="/") Take me home
 </template>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .not-found
   padding 2rem
   h2

@@ -17,15 +17,15 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .slide-list
   ul
     li
       list-style none
       padding .5rem
       border-radius 0 .5rem .5rem 0
-      border-left 2px solid $mainColor
-      background rgba($mainColor, .08)
+      border-left 4px solid $mainColor
+      background rgba($mainColor, .05)
       &:not(:last-child)
         margin-bottom 1rem
       &:hover

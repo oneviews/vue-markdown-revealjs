@@ -1,25 +1,25 @@
 <template lang="pug">
   #app
-    transition(mode="out-in")
+    transition(mode="out-in" name="fade")
       router-view
 </template>
 
 <style src="../node_modules/reveal.js/css/reset.css"></style>fg
 <style src="./styles/base.styl" lang="stylus"></style>
-<style lang="stylus" scoped>
-.v-enter
+<style lang="stylus">
+.fade-enter
 	transform translate(-100px, 0)
 	opacity 0
-.v-enter-to
+.fade-enter-to
 	opacity 1
-.v-enter-active
+.fade-enter-active
 	transition all 1s 0s ease
-.v-leave
+.fade-leave
 	transform translate(0, 0)
 	opacity 1
-.v-leave-to
+.fade-leave-to
 	transform translate(100px, 0)
 	opacity 0
-.v-leave-active
+.fade-leave-active
 	transition all .5s 0s ease
 </style>

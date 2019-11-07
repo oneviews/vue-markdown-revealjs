@@ -1,0 +1,111 @@
+@require './blockquote'
+@require './code'
+
+p, ul, ol
+  line-height 1.7
+
+// Headings
+h1, h2, h3
+  font-weight bold
+
+h1
+  font-size 1.8em
+  text-align center
+  color $mainColor
+
+h2
+  font-size 1.5em
+  text-align center
+  color $mainColor
+  text-decoration underline $accentColor solid
+  text-underline-position under
+
+h3
+  display inline-block
+  font-size 1em
+  margin .5rem
+  color $accentColor
+  text-decoration underline $mainColor solid
+  text-underline-position under
+
+// Horizontal Rules
+hr
+  border 0
+  border-top 1px dashed $mainColor
+
+// Emphasis
+strong
+  font-weight bold
+em
+  font-style italic
+s
+  text-decoration line-through
+
+// Lists
+ul, ol
+  padding-left 1.2em
+  li
+    font-size .95em
+    margin-top .5em
+    margin-bottom .5em
+  > li > ul, ol > li
+    font-size .95em
+    color lighten($textColor, 20%)
+    &> ul, ol > li
+      font-size .95em
+      color lighten($textColor, 30%)
+ol
+  counter-reset list-count
+  list-style none
+ol > li:before
+    content counter(list-count) ". "
+    counter-increment list-count
+    font-weight bold
+
+// Tables
+table
+  border-collapse collapse
+  margin 1rem 0
+  display block
+  overflow-x auto
+tr
+  border-top 1px solid #dfe2e5
+  &:nth-child(2n)
+    background-color #f6f8fa
+th, td
+  border 1px solid #dfe2e5
+  padding .6em 1em
+
+// Images
+img
+  max-width 100%
+  padding .5em
+  box-sizing border-box
+
+// Plugins
+sub
+	font-size .7em
+	vertical-align sub
+sup
+	font-size .7em
+	vertical-align super
+
+mark
+  font-weight bold
+  color lighten($textColor, 10%)
+  background linear-gradient(white 65%, lighten($accentColor, 50%) 35%)
+
+u
+  text-decoration underline $mainColor solid
+  text-underline-position under
+
+.left
+  float left
+
+.right
+  float right
+
+.center
+  display inline-block
+  width 100%
+  text-align center

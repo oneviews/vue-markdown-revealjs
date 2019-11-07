@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .home
   padding 2rem
   h2

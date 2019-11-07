@@ -1,5 +1,6 @@
 const Mode = require('frontmatter-markdown-loader/mode')
 const path = require('path')
+const md = require('./markdownIt')
 
 module.exports = {
   chainWebpack(config){
@@ -8,12 +9,12 @@ module.exports = {
       .use('frontmatter-markdown-loader')
         .loader('frontmatter-markdown-loader')
         .options({
-          mode: [Mode.VUE_COMPONENT],
-          vue: {
-            root: 'body'
-          }
+          mode: [Mode.VUE_RENDER_FUNCTIONS],
+          vue: { root: 'body' },
+          markdownIt: md
         })
       .end()
+
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('stylus').oneOf(type)))
   }

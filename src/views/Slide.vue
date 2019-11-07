@@ -1,20 +1,24 @@
 <template lang="pug">
   .slide
-    component(:is="component")
+    SlideBody(:slug="slug")
 </template>
 
 <script>
+import SlideBody from '../components/SlideBody.vue'
+
 export default {
+  components: { SlideBody },
   data() {
-    const slug = this.$route.path.slice(1,)
-    const fm = require(`../../slides/${slug}/index.md`)
     return {
-      attributes: fm.attributes,
-      component: fm.vue.component
+      slug: this.$route.path.slice(1,)
     }
   }
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
+.slide
+  .body
+    @import '../styles/slide.styl'
+    // font-size 36px
 </style>

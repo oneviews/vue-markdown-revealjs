@@ -1,0 +1,30 @@
+blockquote
+  position relative
+  padding 10px 15px 10px 60px
+  margin 1rem 0
+  box-sizing border-box
+  background #fbfbfb
+  color darken($mainColor, 50%)
+  border-left 12px solid lighten($mainColor, 50%)
+  box-shadow 0 2px 4px rgba(0, 0, 0, 0.14)
+  &:before
+    display inline-block
+    position absolute
+    top 15px
+    left 15px
+    vertical-align middle
+    content "\f10d"
+    font-family "Font Awesome 5 Free"
+    color lighten($mainColor, 50%)
+    font-size 20px
+    line-height 1
+    font-weight 900
+  p
+    padding 0
+    margin 7px 0
+    line-height 1.7
+  cite
+    display block
+    text-align right
+    color #888888
+    font-size 0.9em
