@@ -1,5 +1,7 @@
 # vue-markdown-revealjs
 
+Only support for the horizontal slides.
+
 ## Project setup
 ```
 yarn install

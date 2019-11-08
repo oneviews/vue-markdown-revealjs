@@ -14,7 +14,6 @@ export default {
       templateRender: null,
       height: 1080,
       width: { '4:3': 1440, '16:10': 1728, '16:9': 1920 },
-      padding: 10,
     }
   },
   render (createElement) {
@@ -37,15 +36,54 @@ export default {
     Reveal.initialize({
       width: this.width[this.aspect],
       height: this.height,
-      margin: 0.1,
+      margin: 0,
+      center: false,
       hash: true,
-      slideNumber: this.print ? false : 'c/t',
+      slideNumber: false,
       controls: false,
       hideCursorTime: 3000,
       transition: 'fade',
     })
-    if (this.print) require('reveal.js/css/print/pdf.css')
-  }
+    if (this.print) {
+      require('reveal.js/css/print/pdf.css')
+      require('../styles/print.css')
+    } else {
+      require('../styles/presentation.css')
+    }
+    Reveal.addEventListener('ready', () => {
+      const sections = document.querySelectorAll('.slides section')
+      console.log(sections.length)
+      let page = 1
+      let section = ''
+      sections.forEach(el => {
+        if (el.firstElementChild.className !== 'cover-container') {
+          const firstEl = el.firstElementChild.firstElementChild
+          if (firstEl.tagName === 'H2') {
+            section = firstEl.innerHTML
+          }
+          const footer = document.createElement('div')
+          footer.className = 'footer'
+          const currentSection = document.createElement('div')
+          currentSection.className = 'current-section'
+          const sectionName = document.createElement('p')
+          sectionName.className = 'section-name'
+          sectionName.innerHTML = section
+          currentSection.append(sectionName)
+          const slideName = document.createElement('p')
+          slideName.className = 'slide-name'
+          slideName.innerHTML = this.fm.attributes.title
+          currentSection.append(slideName)
+          footer.append(currentSection)
+          const pageNumber = document.createElement('span')
+          pageNumber.className = 'page-number'
+          pageNumber.innerHTML = `${page} / ${sections.length}`
+          footer.append(pageNumber)
+          el.appendChild(footer)
+        }
+        page++
+      })
+    })
+  },
 }
 </script>
 
@@ -64,4 +102,43 @@ export default {
   .reveal
     .slides
       outline 4px solid $accentColor
+.footer
+  position absolute
+  padding 0 1em 0 1em
+  height 2em
+  width calc(100% - 2em)
+  bottom 0
+  left 50%
+  transform translateX(-50%)
+  border-top 1px dotted $mainColor
+  // background rgba($accentColor, 0.2)
+  .current-section
+    position absolute
+    padding inherit
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    text-align center
+    height 2em
+    .section-name
+      line-height 36px
+      font-size .6em
+      word-wrap none
+      color $mainColor
+      text-decoration underline $accentColor solid
+      text-underline-position under
+    .slide-name
+      line-height 36px
+      font-size .6em
+      word-wrap none
+      font-weight bold
+      color $mainColor
+  .page-number
+    position absolute
+    padding inherit
+    top 50%
+    right 0
+    transform translateY(-50%)
+    font-size 0.75em
+    color lighten($textColor, 50%)
 </style>

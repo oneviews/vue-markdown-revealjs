@@ -1,0 +1,18 @@
+.slides .pdf-page > section {
+  height: 100%;
+  position: relative;
+}
+
+.reveal .slides .pdf-page > section {
+  padding: 1em !important;
+  padding-bottom: 2em !important;
+}
+
+.slide-content {
+  position: absolute;
+  padding: inherit;
+  width: calc(100% - 2em);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

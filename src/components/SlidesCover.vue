@@ -3,10 +3,10 @@
     .content
       h1.title(v-if="attrs.title") {{ attrs.title }}
       h2.subtitle(v-if="attrs.subtitle") {{ attrs.subtitle }}
+      p.date(v-if="attrs.date") {{ attrs.date }}
     .credit
       p.author(v-if="attrs.author") {{ attrs.author }}
       p.affiliation(v-if="attrs.affiliation") {{ attrs.affiliation }}
-      p.date(v-if="attrs.date") {{ attrs.date }}
 </template>
 
 <script>
@@ -38,11 +38,19 @@ export default {
     .title
       font-size 2em
     .subtitle
-      font-size .8em
+      font-size .9em
       text-decoration none
+      margin .4em 0 .4em 0
       color $accentColor
+    .date
+      text-align center
+      font-size .8em
+      color lighten($textColor, 10%)
 
   .credit
+    width 100%
     grid-area credit
     text-align right
+    font-size .9em
+    color lighten($textColor, 10%)
 </style>

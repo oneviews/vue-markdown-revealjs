@@ -7,12 +7,7 @@ module.exports = md => {
   }
 
   function cover(state) {
-    let token = new state.Token('hr', 'hr', 0)
-    token.markup = SEP
-    state.tokens.unshift(token)
-    token = new state.Token('cover', '', 0)
-    state.tokens.unshift(token)
-    return true
+    return new state.Token('cover', '', 0)
   }
 
   function nextDivider(tokens, start) {
@@ -62,12 +57,17 @@ module.exports = md => {
       return new state.Token('slide_close', 'section', -1)
   }
 
-  function renderOpening(tokens, idx, options, env, slf) {
-    return `<${tokens[idx].tag}${slf.renderAttrs(tokens[idx])}>`
+  function contentOpen(state) {
+    var token = new state.Token('content_open', 'div', 1)
+    token.block = true
+    token.attrs = [
+        ['class', 'slide-content']
+    ]
+    return token
   }
 
-  function renderClosing(tokens, idx) {
-      return `</${tokens[idx].tag}>`
+  function contentClose(state) {
+      return new state.Token('content_close', 'div', -1)
   }
 
   md.core.ruler.push('revealjs', state => {
@@ -78,20 +78,23 @@ module.exports = md => {
         break
       }
       if (openSlides === 0) {
+        state.tokens.unshift(contentOpen(state))
         state.tokens.unshift(slideOpen(state))
-        divIdx++ // we added a token at the beginning, we need to update divIdx
+        state.tokens.unshift(slideClose(state))
+        state.tokens.unshift(cover(state))
+        state.tokens.unshift(slideOpen(state))
+        divIdx += 5
       }
       let tags = []
-      while (openSlides > 0) {
-        tags.push(slideClose(state))
-      }
+      tags.push(contentClose(state))
+      tags.push(slideClose(state))
       tags.push(slideOpen(state))
+      tags.push(contentOpen(state))
       state.tokens.splice(divIdx, 1, ...tags)
     }
 
-    while (openSlides > 0) {
-      state.tokens.push(slideClose(state))
-    }
+    state.tokens.push(contentClose(state))
+    state.tokens.push(slideClose(state))
 
     state.tokens.unshift(slidesOpen(state))
     state.tokens.unshift(presentationOpen(state))
@@ -99,11 +102,5 @@ module.exports = md => {
     state.tokens.push(presentationClose(state))
   })
 
-  md.renderer.rules.pres_open = renderOpening
-  md.renderer.rules.pres_close = renderClosing
-  md.renderer.rules.slide_open = renderOpening
-  md.renderer.rules.slide_close = renderClosing
-
-  md.core.ruler.after('inline', 'cover', cover)
   md.renderer.rules.cover = () => { return '<SlidesCover />\n' }
 }
