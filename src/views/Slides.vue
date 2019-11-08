@@ -2,15 +2,15 @@
   .slides-container
     .buttons
       a.button(href="/")
-        i.fas.fa-home
-      a.button(:href="url")
-        i.fas.fa-desktop(v-if="print")
-        i.fas.fa-print(v-else)
+        | Home
+      .button(@click="printSlide")
+        | Print
       .button(@click="toggleBorder")
-        i.far.fa-square
+        | Border
       .button(@click="toggleAspect")
         | {{ aspect }}
     SlidesBody(:print="print" :aspect="aspect" :class="{border: border}")
+    iframe.printer-window(v-if="!print" style="{visibility: hidden, height: 0, width: 0}")
 </template>
 
 <script>
@@ -28,9 +28,6 @@ export default {
     print() {
       return 'print-pdf' in this.$route.query
     },
-    url() {
-      return this.print ? this.$route.path : `${this.$route.path}?print-pdf&aspect=${this.aspect}`
-    },
   },
   methods: {
     toggleBorder() {
@@ -38,8 +35,19 @@ export default {
     },
     toggleAspect() {
       this.aspect = this.aspect === '4:3' ? '16:10' : this.aspect === '16:10' ? '16:9' : '4:3'
-    }
+    },
+    printSlide() {
+      document.querySelector('.printer-window').src = `${window.origin}${window.location.pathname}?print-pdf&aspect=${this.aspect}`
+    },
   },
+  mounted() {
+    if (!this.print) {
+      const el = document.querySelector('.printer-window')
+      el.onload = () => {
+        el.contentWindow.print()
+      }
+    }
+  }
 }
 </script>
 
