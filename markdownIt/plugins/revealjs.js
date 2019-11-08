@@ -19,8 +19,6 @@ module.exports = md => {
     return -1
   }
 
-  var openSlides = 0
-
   function presentationOpen(state) {
       var token = new state.Token('pres_open', 'section', 1)
       token.block = true
@@ -48,12 +46,10 @@ module.exports = md => {
   }
 
   function slideOpen(state) {
-      openSlides++
       return new state.Token('slide_open', 'section', 1)
   }
 
   function slideClose(state) {
-      openSlides--
       return new state.Token('slide_close', 'section', -1)
   }
 
@@ -72,19 +68,18 @@ module.exports = md => {
 
   md.core.ruler.push('revealjs', state => {
     let divIdx = 0
-    for (;;) {
+    for (let i = 0;;i++) {
       divIdx = nextDivider(state.tokens, divIdx)
-      if (divIdx === -1) {
-        break
-      }
-      if (openSlides === 0) {
+      if (i === 0) {
         state.tokens.unshift(contentOpen(state))
         state.tokens.unshift(slideOpen(state))
         state.tokens.unshift(slideClose(state))
         state.tokens.unshift(cover(state))
         state.tokens.unshift(slideOpen(state))
+        if (divIdx === -1) break
         divIdx += 5
       }
+      if (divIdx === -1) break
       let tags = []
       tags.push(contentClose(state))
       tags.push(slideClose(state))

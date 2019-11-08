@@ -52,7 +52,6 @@ export default {
     }
     Reveal.addEventListener('ready', () => {
       const sections = document.querySelectorAll('.slides section')
-      console.log(sections.length)
       let page = 1
       let section = ''
       sections.forEach(el => {
@@ -123,14 +122,13 @@ export default {
     .section-name
       line-height 36px
       font-size .6em
-      word-wrap none
+      white-space nowrap
       color $mainColor
-      text-decoration underline $accentColor solid
-      text-underline-position under
+      border-bottom 1px solid $accentColor
     .slide-name
       line-height 36px
       font-size .6em
-      word-wrap none
+      white-space nowrap
       font-weight bold
       color $mainColor
   .page-number

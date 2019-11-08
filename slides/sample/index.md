@@ -116,7 +116,7 @@ _Text with underline_
 
 ### markdown-it-attrs
 
-![](./imgs/logo.png) {.R}
+![](./imgs/logo.png) {{.R}}
 
 Floated image
 

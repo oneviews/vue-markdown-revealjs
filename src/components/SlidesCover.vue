@@ -37,10 +37,11 @@ export default {
     align-self center
     .title
       font-size 2em
+      margin-bottom .4em
     .subtitle
       font-size .9em
       text-decoration none
-      margin .4em 0 .4em 0
+      margin-bottom .4em
       color $accentColor
     .date
       text-align center
