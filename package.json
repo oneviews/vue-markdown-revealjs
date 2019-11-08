@@ -33,6 +33,7 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-underline": "^1.0.1",
+    "medium-zoom": "^1.0.4",
     "moment": "^2.24.0",
     "prismjs": "^1.17.1",
     "pug": "^2.0.4",
