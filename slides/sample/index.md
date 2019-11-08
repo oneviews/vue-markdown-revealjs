@@ -2,54 +2,28 @@
 title: Sample Text
 subtitle: Subtitle
 author: Author
+affiliation: Affiliation
 date: 1996/02/27
 ---
 
-## Heading
+## Section
 
-# h1 Heading 8-)
-## h2 Heading
-### h3 Heading
+### Subsection
 
----
-
-## Horizontal Rules
+Sample text
 
 ***
 
----
+**Bold text**
 
-## Emphasis
-
-**This is bold text**
-
-*This is italic text*
+*Italic text*
 
 ~~Strikethrough~~
 
----
+> Blockquotes
 
-## Blockquotes
-
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
-
----
-
-## Lists
-
-Unordered
-
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
+- Create a list by starting a line with `+`, `-`, or `*`
   - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!
-
-Ordered
 
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
@@ -57,19 +31,11 @@ Ordered
 
 ---
 
-## Code
+### Code
 
 Inline `code`
 
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-
-Block code "fences"
+Block code
 
 ```
 Sample text here...
@@ -87,7 +53,7 @@ console.log(foo(5));
 
 ---
 
-## Tables
+### Tables
 
 | Option | Description |
 | ------ | ----------- |
@@ -105,7 +71,7 @@ Right aligned columns
 
 ---
 
-## Links
+### Links
 
 [link text](http://dev.nodeca.com)
 
@@ -114,7 +80,7 @@ Right aligned columns
 Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
 
 
-## Images
+### Images
 
 ![](./imgs/logo.png)
 
@@ -142,26 +108,23 @@ The killer feature of `markdown-it` is very effective support of
 
 _Text with underline_
 
+---
+
 ### markdown-it-imsize
 
 ![](./imgs/logo.png =400x80)
 
 ### markdown-it-attrs
 
-Center {.center}
+![](./imgs/logo.png) {.R}
 
-Left {.left}
-
-Right {.right}
-
-![](./imgs/logo.png) {.center}
-
+Floated image
 
 ### KaTeX
 
 Inline
 
-$F = ma + \error$
+$F = ma + \hoge$
 
 Display
 

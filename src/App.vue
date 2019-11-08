@@ -1,7 +1,6 @@
 <template lang="pug">
   #app
-    transition(mode="out-in" name="fade")
-      router-view
+    router-view
 </template>
 
 <style src="../node_modules/reveal.js/css/reset.css"></style>

@@ -1,4 +1,4 @@
-# my-slides
+# vue-markdown-revealjs
 
 ## Project setup
 ```

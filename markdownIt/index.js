@@ -30,6 +30,7 @@ md.use(require('markdown-it-underline'))
 md.use(require('markdown-it-imsize'))
 md.use(require('markdown-it-attrs'))
 md.use(require('./plugins/katex'))
+md.use(require('./plugins/revealjs'))
 
 const defaultRender = md.renderer.rules.link_open || function (tokens, idx, options, env, self) {
   return self.renderToken(tokens, idx, options)

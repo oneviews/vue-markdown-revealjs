@@ -10,7 +10,7 @@ module.exports = {
         .loader('frontmatter-markdown-loader')
         .options({
           mode: [Mode.VUE_RENDER_FUNCTIONS],
-          vue: { root: 'body' },
+          vue: { root: 'slides-body' },
           markdownIt: md
         })
       .end()

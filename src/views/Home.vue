@@ -1,15 +1,15 @@
 <template lang="pug">
   .home
     h2 SLIDES
-    SlideList
+    SlidesList
 </template>
 
 <script>
-import SlideList from '@/components/SlideList.vue'
+import SlidesList from '@/components/SlidesList.vue'
 
 export default {
   components: {
-    SlideList
+    SlidesList
   }
 }
 </script>
